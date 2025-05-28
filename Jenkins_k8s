@@ -133,7 +133,7 @@ pipeline{
         when { expression {  params.action == 'create' } }
         environment {
             GIT_REPO_NAME = "java"
-            GIT_USER_NAME = "ravi1003"
+            GIT_USER_NAME = "Avinash-067"
         }
         steps {
             withCredentials([string(credentialsId: 'github', variable: 'GITHUB_TOKEN')]) {
@@ -142,8 +142,8 @@ pipeline{
                     sh """
                         git checkout main
                         git pull --rebase
-                        git config user.email "ravi410211@gmail.com"
-                        git config user.name "ravigupta"
+                        git config user.email "avinashpardhi039@gmail.com"
+                        git config user.name "avinashpardhi"
                         sed -i "s|image: ${params.DockerHubUser}/${params.ImageName}:.*|image: ${params.DockerHubUser}/${params.ImageName}:${imageTag}|g" kubernetes/deployment.yaml
                         git add kubernetes/deployment.yaml
                         git commit -m "Update deployment image to version ${imageTag}" || echo "No changes to commit"
